@@ -51,7 +51,7 @@ export function PlayScreen() {
           to the end (right edge) of the scoresheet. */}
       <div className="flex w-fit max-w-full flex-col self-center">
         <div className="flex justify-end">
-          <div className="relative inline-flex items-center">
+          <div className="relative inline-flex items-center pe-3.5">
             <button
               type="button"
               onClick={() => setMenuOpen(true)}

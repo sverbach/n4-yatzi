@@ -28,7 +28,7 @@ const baseCell = (extra: CSSProperties = {}): CSSProperties => ({
   background: 'var(--surface)',
   color: 'var(--text)',
   boxSizing: 'border-box',
-  minHeight: '24px',
+  minHeight: '35px',
   ...extra,
 });
 
@@ -250,7 +250,7 @@ export function Scoresheet() {
         <div
           className="grid"
           style={{
-            gridTemplateColumns: '150px repeat(6, minmax(40px, 50px))',
+            gridTemplateColumns: '150px repeat(6, minmax(44px, 56px))',
             minWidth: 'max-content',
           }}
         >
