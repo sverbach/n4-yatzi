@@ -1,0 +1,6 @@
+node_modules
+dist
+dev-dist
+public/pwa-192x192.png
+public/pwa-512x512.png
+public/apple-touch-icon.png

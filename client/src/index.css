@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — recreated from the handoff's bound design system
+ * ("mono brutalist", Solarized-derived). Light is the default; the
+ * dark palette re-resolves the same variable names under
+ * [data-theme="dark"] so nothing needs to be recomputed manually.
+ * ------------------------------------------------------------------ */
+
+:root,
+[data-theme='light'] {
+  /* Surfaces */
+  --bg: #fdf6e3;
+  --surface: #fbf3dd;
+  --surface-2: #eee8d5;
+  --inset: #f2ecd8;
+  --sol-base3: #fdf6e3;
+
+  /* Ink / text */
+  --ink: #002b36;
+  --text: #586e75;
+  --text-soft: #657b83;
+  --muted: #93a1a1;
+
+  /* Rules */
+  --rule-soft: #d9d2bd;
+  --rule-mid: #b9b29c;
+
+  /* Accent */
+  --accent: #2aa198;
+  --accent-ink: #fdf6e3;
+  --accent-wash: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  --accent-line: color-mix(in srgb, var(--accent) 55%, var(--ink));
+  --accent-edge: color-mix(in srgb, var(--accent) 82%, #000000);
+
+  /* Shadows */
+  --shadow-1:
+    0 1px 2px rgba(88, 110, 117, 0.2), 0 2px 6px rgba(88, 110, 117, 0.14);
+  --shadow-card:
+    0 12px 32px -8px rgba(88, 110, 117, 0.3),
+    0 24px 56px -16px rgba(88, 110, 117, 0.24);
+  --shadow-accent: 0 6px 14px -2px rgba(42, 161, 152, 0.4);
+}
+
+[data-theme='dark'] {
+  --bg: #002b36;
+  --surface: #05323d;
+  --surface-2: #073642;
+  --inset: #04303a;
+  --sol-base3: #04303a;
+
+  --ink: #eee8d5;
+  --text: #93a1a1;
+  --text-soft: #839496;
+  --muted: #657b83;
+
+  --rule-soft: #0e3b45;
+  --rule-mid: #1a5560;
+
+  --accent: #2aa198;
+  --accent-ink: #fdf6e3;
+  --accent-wash: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  --accent-line: color-mix(in srgb, var(--accent) 55%, var(--ink));
+  --accent-edge: color-mix(in srgb, var(--accent) 78%, #ffffff);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.32);
+  --shadow-card:
+    0 12px 32px -8px rgba(0, 0, 0, 0.5), 0 24px 56px -16px rgba(0, 0, 0, 0.4);
+  --shadow-accent: 0 6px 14px -2px rgba(42, 161, 152, 0.5);
+}
+
+/* Static tokens (theme-independent). */
+:root {
+  --font-mono:
+    'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo,
+    Consolas, 'Liberation Mono', monospace;
+
+  --t-2xl: 30px;
+
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 14px;
+  --r-full: 999px;
+
+  --dur-2: 160ms;
+  --dur-3: 240ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Map the design tokens into Tailwind's theme so utilities like
+ * `bg-bg`, `text-ink`, `border-rule-soft` resolve to the live CSS
+ * variables (and thus flip with the theme). `inline` keeps them as
+ * var() references rather than snapshotting the value. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-inset: var(--inset);
+  --color-mat: var(--sol-base3);
+
+  --color-ink: var(--ink);
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-muted: var(--muted);
+
+  --color-rule-soft: var(--rule-soft);
+  --color-rule-mid: var(--rule-mid);
+
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-wash: var(--accent-wash);
+  --color-accent-line: var(--accent-line);
+  --color-accent-edge: var(--accent-edge);
+
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-full: var(--r-full);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent-edge);
+}
+a:hover {
+  color: var(--accent);
+}
+
+/* Display wordmark style */
+.t-display {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ *
+ * Bottom sheet — a native <dialog> pinned to the bottom edge, sliding
+ * up on open and back down on close. Enter/exit are animated with
+ * @starting-style + allow-discrete so the exit transition survives the
+ * dialog being removed from the top layer.
+ * ------------------------------------------------------------------ */
+.sheet-bottom {
+  margin: auto auto 0; /* pin to bottom, centered horizontally */
+  translate: 0 100%;
+  transition:
+    translate var(--dur-3) var(--ease),
+    display var(--dur-3) var(--ease) allow-discrete,
+    overlay var(--dur-3) var(--ease) allow-discrete;
+}
+.sheet-bottom[open] {
+  translate: 0 0;
+}
+@starting-style {
+  .sheet-bottom[open] {
+    translate: 0 100%;
+  }
+}
+.sheet-bottom::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition:
+    opacity var(--dur-3) var(--ease),
+    display var(--dur-3) var(--ease) allow-discrete,
+    overlay var(--dur-3) var(--ease) allow-discrete;
+}
+.sheet-bottom[open]::backdrop {
+  opacity: 1;
+}
+@starting-style {
+  .sheet-bottom[open]::backdrop {
+    opacity: 0;
+  }
+}
