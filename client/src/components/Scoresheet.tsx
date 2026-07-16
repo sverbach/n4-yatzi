@@ -166,7 +166,7 @@ export function Scoresheet() {
 
   const emptyCell = (bold = false) =>
     push({
-      text: '—',
+      text: '',
       style: baseCell({
         background: 'var(--surface)',
         color: 'var(--muted)',
@@ -206,7 +206,7 @@ export function Scoresheet() {
         });
       } else {
         push({
-          text: '—',
+          text: '',
           style: baseCell({ color: 'var(--muted)' }),
         });
       }
@@ -241,7 +241,7 @@ export function Scoresheet() {
       style={{ background: 'var(--mat)' }}
     >
       <div
-        className="w-fit max-w-full max-h-[60vh] overflow-auto rounded-[var(--r-md)] border-2 border-ink bg-surface sm:max-h-none"
+        className="w-fit max-w-full max-h-[60vh] overflow-auto rounded-[var(--r-md)] border-2 border-ink bg-surface"
         style={{
           boxShadow:
             '0 12px 32px -6px rgba(88,110,117,0.35), 0 24px 56px -12px rgba(88,110,117,0.3)',
@@ -250,7 +250,7 @@ export function Scoresheet() {
         <div
           className="grid"
           style={{
-            gridTemplateColumns: '140px repeat(6, minmax(44px, 56px))',
+            gridTemplateColumns: '150px repeat(6, minmax(40px, 50px))',
             minWidth: 'max-content',
           }}
         >

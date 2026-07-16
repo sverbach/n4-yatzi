@@ -46,41 +46,43 @@ export function PlayScreen() {
   const themeLabel = darkMode ? 'Switch to light mode' : 'Switch to dark mode';
 
   return (
-    <div className="mx-auto flex max-w-[1100px] flex-col gap-2">
-      <div className="flex justify-center">
-        <div className="relative inline-flex items-center ml-4">
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-            title="Menu"
-            className="absolute top-1/2 right-full mr-2 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center text-ink transition-colors duration-[var(--dur-2)] [transition-timing-function:var(--ease)] hover:text-accent"
-          >
-            <MenuIcon />
-          </button>
+    <div className="mx-auto flex max-w-[1100px] flex-col gap-6">
+      {/* Title + scoreboard share a board-width column so the title can align
+          to the end (right edge) of the scoresheet. */}
+      <div className="flex w-fit max-w-full flex-col self-center">
+        <div className="flex justify-end">
+          <div className="relative inline-flex items-center">
+            <button
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              title="Menu"
+              className="absolute top-1/2 right-full mr-2 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center text-ink transition-colors duration-[var(--dur-2)] [transition-timing-function:var(--ease)] hover:text-accent"
+            >
+              <MenuIcon />
+            </button>
 
-          <button
-            type="button"
-            onClick={toggleDarkMode}
-            aria-label={themeLabel}
-            title={themeLabel}
-            className="group relative inline-flex cursor-pointer items-center border-0 bg-transparent p-0"
-          >
-            <span className="t-display" style={{ fontSize: 'var(--t-2xl)' }}>
-              Yatzy
-            </span>
-            <span className="absolute top-1/2 left-full flex h-6 w-6 -translate-y-1 items-center justify-center text-ink transition-colors duration-[var(--dur-2)] [transition-timing-function:var(--ease)] group-hover:text-accent">
-              {darkMode ? <MoonIcon /> : <></>}
-            </span>
-          </button>
+            <button
+              type="button"
+              onClick={toggleDarkMode}
+              aria-label={themeLabel}
+              title={themeLabel}
+              className="group relative inline-flex cursor-pointer items-center border-0 bg-transparent p-0"
+            >
+              <span className="t-display" style={{ fontSize: 'var(--t-2xl)' }}>
+                Yatzy
+              </span>
+              <span className="absolute top-1/2 left-full flex h-6 w-6 -translate-y-1 items-center justify-center text-ink transition-colors duration-[var(--dur-2)] [transition-timing-function:var(--ease)] group-hover:text-accent">
+                {darkMode ? <MoonIcon /> : <></>}
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="flex flex-col gap-6">
         <Scoresheet />
-
-        <DiceArea />
       </div>
+
+      <DiceArea />
 
       <BottomSheet
         open={menuOpen}
