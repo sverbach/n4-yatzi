@@ -240,13 +240,7 @@ export function Scoresheet() {
       className="self-center w-fit max-w-full rounded-[var(--r-lg)] p-3.5"
       style={{ background: 'var(--mat)' }}
     >
-      <div
-        className="w-fit max-w-full max-h-[60vh] overflow-auto rounded-[var(--r-md)] border-2 border-ink bg-surface"
-        style={{
-          boxShadow:
-            '0 12px 32px -6px rgba(88,110,117,0.35), 0 24px 56px -12px rgba(88,110,117,0.3)',
-        }}
-      >
+      <div className="w-fit max-w-full max-h-[60vh] overflow-auto rounded-[var(--r-md)] border-2 border-ink bg-surface shadow-[var(--shadow-card)]">
         <div
           className="grid"
           style={{
