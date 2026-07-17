@@ -47,8 +47,6 @@ export function PlayScreen() {
 
   return (
     <div className="mx-auto flex max-w-[1100px] flex-col gap-6">
-      {/* Title + scoreboard share a board-width column so the title can align
-          to the end (right edge) of the scoresheet. */}
       <div className="flex w-fit max-w-full flex-col self-center">
         <div className="flex justify-end">
           <div className="relative inline-flex items-center pe-3.5">
@@ -80,9 +78,9 @@ export function PlayScreen() {
         </div>
 
         <Scoresheet />
-      </div>
 
-      <DiceArea />
+        <DiceArea />
+      </div>
 
       <BottomSheet
         open={menuOpen}

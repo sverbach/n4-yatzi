@@ -1,7 +1,5 @@
 import { useGameStore } from '../store/gameStore';
-import { Badge } from './ui/Badge';
 import { Button } from './ui/Button';
-import { Tooltip } from './ui/Tooltip';
 import { Dice } from './Dice';
 
 export function DiceArea() {

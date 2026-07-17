@@ -68,7 +68,7 @@ export const useGameStore = create<GameState>()(
       held: [...START_HELD],
       rollsLeft: 3,
       rolling: false,
-      darkMode: false,
+      darkMode: true,
       history: [],
 
       setNewPlayerName: (name) => set({ newPlayerName: name }),
