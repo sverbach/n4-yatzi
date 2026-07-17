@@ -1,7 +1,6 @@
 # Yatzy — Pass & Play (PWA)
 
-Single-device, pass-and-play Yatzy for up to 6 players, implemented from the
-design handoff in [`../design_handoff_yatzy`](../design_handoff_yatzy).
+Single-device, pass-and-play Yatzy for up to 6 players.
 
 ## Stack
 

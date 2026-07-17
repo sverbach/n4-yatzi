@@ -1,0 +1,8 @@
+services:
+  client:
+    image: ghcr.io/sverbach/n4-yatzi-client:latest
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
