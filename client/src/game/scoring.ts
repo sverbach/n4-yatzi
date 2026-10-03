@@ -121,7 +121,11 @@ export const categories: Category[] = [
     label: 'Large straight',
     calc: (d) => {
       const s = new Set(d);
-      return [2, 3, 4, 5, 6].every((v) => s.has(v)) ? 20 : 0;
+      const runs = [
+        [1, 2, 3, 4, 5],
+        [2, 3, 4, 5, 6],
+      ];
+      return runs.some((run) => run.every((v) => s.has(v))) ? 20 : 0;
     },
   },
   {
